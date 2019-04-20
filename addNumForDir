@@ -1,0 +1,22 @@
+#!/bin/bash 
+
+if [ $# -eq 1 ];
+then
+    dir=$1
+    i=1
+    for file in $dir/*; do    
+        if [ -f "$file" ];
+        then 
+            oldfilename=${file##*/}
+            echo $oldfilename
+            newfilename=$i"_"$oldfilename
+            echo $newfilename
+            mv "$file" "$dir""/""$newfilename"
+            let i++
+        fi 
+        done
+else
+    echo "Usage : addNumForDir [FilePath]"
+fi 
+
+
